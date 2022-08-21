@@ -1,0 +1,29 @@
+body{
+    margin:0px;
+    padding: 0px;
+  }
+
+   @font-face {
+      font-family: "Helvetica";
+      /* src: local("Helvetica"), url('./Helvetica.ttf') format('ttf') */
+    }
+
+    html, body{
+      font-family: "Helvetica";
+    }
+
+  .h-100vh{
+    height: 100vh;
+  }
+
+  .fs-16{
+    font-size: 16px;
+  }
+
+  .fs-20{
+    font-size: 20px;
+  }
+
+  .bl-color{
+    color: #000000;
+  }

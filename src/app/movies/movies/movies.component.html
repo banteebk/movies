@@ -1,0 +1,50 @@
+<div class="container-fluid" >
+    <div class="row mt-2">
+      <div class="input-group">
+        <input type="text" class="form-control" [(ngModel)]="queryTxt" placeholder="Movies Search">
+        <span class="input-group-text input-group-text-new" >
+          <i class="fa fa-close text-white" (click)="resetSearch()"></i>
+        </span>
+        <span class="input-group-text input-group-text-new" >
+          <i class="fa fa-search text-white" (click)="searchMovie()"></i>
+        </span>
+      </div>
+    </div>
+    <div class="row mt-4 px-3">
+      <h5>Trending</h5>
+    </div>
+    <div class="row mt-3 px-3">
+      <div class="col-12 col-sm-6 col-lg-3 mb-2" *ngFor="let movie of movies?.results" (click)="openDetails(movie.id)" style="cursor: pointer">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}?api_key={{dataService.API_KEY}}" alt="Card image">
+          <div class="card-body">
+            <p class="card-title fs-16 fw-bold">{{movie.title}} </p>
+            <p class="card-text fs-14 fw-bold">
+              <i class="fa fa-star me-1 star-clr"></i> {{movie.vote_average}}/10</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="movies?.length == 0">No movies found</div>
+      
+   
+
+    </div>
+    <div class="row my-3">
+        <nav>
+            <ul class="pagination justify-content-center" style="cursor: pointer;">
+              <li class="page-item " (click)="backPage()" *ngIf="selectedPage != 1">
+                <a class="page-link " aria-label="Previous" >
+                  <span aria-hidden="true"><</span>
+                </a>
+              </li>
+              <li class="page-item" [class.active]="selectedPage ==1"><a class="page-link" (click)="setPage(1)">1</a></li>
+              <li class="page-item" [class.active]="selectedPage ==2"><a class="page-link" (click)="setPage(2)">2</a></li>
+              <li class="page-item" [class.active]="selectedPage ==3"><a class="page-link" (click)="setPage(3)">3</a></li>
+              <li class="page-item" (click)="nextPage()" *ngIf="selectedPage != movies?.total_pages">
+                <a class="page-link" aria-label="Next">
+                  <span aria-hidden="true">></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+    </div>

@@ -1,0 +1,26 @@
+<div class="container-fluid h-100vh">
+    <div class="row h-100vh align-items-center">
+      <div class="col-sm p-lg-5">
+        <h3 class="mt-2 mt-lg-0">
+            <img src="../../../assets/backicon.png" (click)="goBack()" alt="back-cion" style="cursor: pointer"/>
+          </h3>
+        <h3 class="mt-5 fw-bold" style="font-size: 42px;">{{movieDetails?.title}}</h3>
+        <p class="fs-16 bl-color mb-2"> Rating: {{movieDetails?.vote_average}}/10</p>
+        <p class="fs-20 bl-color">{{movieDetails?.overview}}</p>
+        <div class="row">
+          <div class="col-auto">
+              <p class="fs-16 bl-color">Release Date</p>
+            <p class="fs-16 bl-color">Orginal Language</p>
+          </div>
+          <div class="col">
+            <p class="fs-16 bl-color">{{movieDetails?.release_date}}</p>
+            <p class="fs-16 bl-color">{{movieDetails?.original_language}}</p>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-sm pe-lg-0" *ngIf="movieDetails?.poster_path">
+        <img src='https://image.tmdb.org/t/p/w500/{{movieDetails.poster_path}}?api_key={{dataService.API_KEY}}' class="h-100vh w-100" alt="images"/>
+      </div>
+    </div>
+  </div>
